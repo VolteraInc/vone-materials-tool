@@ -10,6 +10,7 @@ import PrivateRoute from "./Components/Authentication/PrivateRoute";
 import ReactDOM from "react-dom";
 import defaultValue from "./Components/Vone/defaultValue";
 import { Ink } from "@volterainc/utils-ink";
+
 function App() {
   return (
     <Router>

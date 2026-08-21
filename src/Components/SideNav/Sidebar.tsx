@@ -7,6 +7,7 @@ const Sidebar: React.FC = () => {
   return (
     <div className="Sidebar">
       <ul className="SidebarList">
+        <div>
         {SidebarData.map((val, key) => {
           return (
             <li
@@ -21,6 +22,7 @@ const Sidebar: React.FC = () => {
             </li>
           );
         })}
+        </div>
         <div className="logout">
           <Logout icon="icon" title="title" />
         </div>

@@ -35,13 +35,15 @@ const Home = () => {
     //   return <Main />;
   }
   return (
-    <div>
-      <h1>Select Platform</h1>
-      <div className="ActionButtons">
-        <JumboButton text="Vone" onClick={() => setPlatform(Platform.VONE)} />
+    <>
+      <div className="header">
+        <h1>Select Platform</h1>
+      </div>
+      <div className="hero-button-container">
+        <JumboButton text="V-One" onClick={() => setPlatform(Platform.VONE)} />
         <JumboButton text="Nova" onClick={() => setPlatform(Platform.NOVA)} disabled={true} />
       </div>
-    </div>
+    </>
   );
 };
 export default Main;

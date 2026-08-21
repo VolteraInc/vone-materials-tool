@@ -11,6 +11,9 @@ const API = {
 //number of ink per type to display
 const displayLength = 4;
 
+const getInkKey = (type: string, ink: any, index: number) =>
+  `${type}-${ink.id || ink.name || index}`;
+
 async function fetchInk(inkAddress: string) {
   try {
     let response = await fetch(inkAddress);
@@ -50,40 +53,41 @@ export function FetchMaterials_Vone() {
 
 const DisplayMaterials = ({ parentCallback }: any) => {
   const data = FetchMaterials_Vone();
-  const [isSelected, setIselected] = useState(false);
-  const [isOpen, setIsopen] = useState(false);
-  const handleOnclick = (selectedInk: any) => {
+  const [selectedInkKey, setSelectedInkKey] = useState<string | null>(null);
+  const handleOnclick = (selectedInk: any, inkKey: string) => {
     parentCallback(selectedInk);
-    setIselected(true);
-    setIsopen(true);
+    setSelectedInkKey(inkKey);
   }
     
   return (
     <ul>
       {data.length === 0 ? (
-        <Spinner label="loading materials" />
+        <Spinner label="Loading" />
       ) : (
         <div className="list-inks">
           {standardOrder(data).map((typeInks) => {
             const type = typeInks[0].type;
             return (
               <div key={type} className="ink-selection-list">
-                <div className="type">
-                  <h4>{type}</h4>
-                </div>
-                {typeInks.slice(0, displayLength).map((inks) => {
+                <h4 className="ink-header">{type}</h4>
+                <div className="ink-selection-buttons">
+                {typeInks.slice(0, displayLength).map((inks, inkIndex) => {
+                  const inkKey = getInkKey(type, inks, inkIndex);
+                  const isSelected = selectedInkKey === inkKey;
                   return (
-                    // Add Select Ink button
-                    <SelectInkButton
-                      key={inks.id}
-                      ink={new Ink(inks)}
-                      disabled={false}
-                      checked={isSelected}
-                      indicator={"check"}
-                      onClick={() => handleOnclick(inks)}
-                    />
+                    <div key={inkKey} className={`ink-button-wrapper${isSelected ? " selected" : ""}`}>
+                      <SelectInkButton
+                        ink={new Ink(inks)}
+                        disabled={false}
+                        checked={isSelected}
+                        indicator={"check"}
+                        onClick={() => handleOnclick(inks, inkKey)}
+                      />
+                      {isSelected && <div className="selected-ink-check" aria-label="Selected ink"></div>}
+                    </div>
                   );
                 })}
+                </div>
               </div>
             );
           })}

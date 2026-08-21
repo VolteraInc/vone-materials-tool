@@ -2,5 +2,109 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .ink-selection-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  
+    padding: 16px;
+  
+    background: #2B2B2B;
+    border-radius: 8px;
+  
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .ink-button-wrapper {
+    position: relative;
+  }
+
+  .ink-header {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  
+    color: #FAFAFA;
+
+    border-bottom: 2px solid #00C2F5;
+  }
 }
-@import "../Actions/Buttons/ActionButtons";
+
+.select-material-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.standard-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 32px;
+
+  background: #FAFAFA;
+  color: #1C1C1C;
+
+  border-radius: 8px;
+  border: none;
+
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: #00C2F5;
+    transform: translateY(-2px);
+    color: #FAFAFA;
+  }
+
+  &:active {
+    background: #00C2F5;
+    scale: 0.98;
+  }
+}
+
+.selected-ink-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border: 4px solid #6FCF2A;
+  border-radius: 16px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6FCF2A;
+  background: transparent;
+  font-size: 32px;
+  font-weight: 1000;
+  pointer-events: none;
+}
