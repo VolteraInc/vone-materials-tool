@@ -64,7 +64,7 @@ const DisplayMaterials = ({ parentCallback }: any) => {
   return (
     <ul>
       {data.length === 0 ? (
-        <Spinner label="Loading" />
+        <Spinner label="Loading materials" />
       ) : (
         <div className="list-inks">
           {standardOrder(data).map((typeInks) => {
