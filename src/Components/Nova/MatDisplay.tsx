@@ -1,5 +1,4 @@
-import FormNova from "./forms/mainForm";
-import { useState } from "react";
+// import FormNova from "./forms/mainForm";
 import { Loadmaterials_Nova } from "../Actions/Database/NovaMaterials";
 import ActionButton from "../Actions/Buttons/ActionButtons";
 
@@ -12,9 +11,9 @@ const MatDisplay: React.FC = () => {
         <ul>
           {data.map((val, key) => {
             return (
-              <a key={key} className="row" onClick={() => {}}>
+              <button type="button" key={key} className="row" onClick={() => {}}>
                 <div id="name">{val}</div>
-              </a>
+              </button>
             );
           })}
         </ul>

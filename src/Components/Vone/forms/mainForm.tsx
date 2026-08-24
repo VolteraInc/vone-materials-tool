@@ -7,7 +7,6 @@ import { Ink, alterInk } from "@volterainc/utils-ink";
 import defaultValue from "../defaultValue";
 import { createInkDefinition } from "../hydration";
 import TextInput from "./TextInput";
-import ActionButton from "../../Actions/Buttons/ActionButtons";
 
 export interface inkProps {
   ink: Ink;
@@ -20,6 +19,8 @@ const Form: React.FC<inkProps> = (props) => {
   useEffect(() => {
     reset(props.ink);
     setNewInk(props.ink);
+    // Ignore empty dependency array since it is intentional.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = handleSubmit(() => {

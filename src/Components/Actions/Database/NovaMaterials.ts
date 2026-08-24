@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../index";
-import { FetchMaterials_Vone } from "./VoneMaterials";
+// import { FetchMaterials_Vone } from "./VoneMaterials"; // not used currently
 
 export function Loadmaterials_Nova() {
   const [data, setData] = useState([""]);
@@ -17,7 +17,7 @@ export function Loadmaterials_Nova() {
     } catch {
       console.error();
     }
-  }, []);
+  });
   return {
     data,
   };

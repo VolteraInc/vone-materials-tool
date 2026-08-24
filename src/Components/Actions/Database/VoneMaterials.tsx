@@ -47,6 +47,8 @@ export function FetchMaterials_Vone() {
       }
     }
     fetchAPI();
+    // Ignore empty dependency array since it is intentional.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return data;
 }

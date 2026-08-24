@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route /*, Redirect */ } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 
 const PrivateRoute: React.ComponentType<any> = ({
@@ -11,16 +11,14 @@ const PrivateRoute: React.ComponentType<any> = ({
     <Route
       {...rest}
       render={(props) => {
-        {/**
+        /**
         return currentUser ? (
           <Component {...props} />
         ) : (
           <Redirect to="/login" />
         );
-         */}
-        return (
-          <Component {...props} />
-        );
+         */
+        return <Component {...props} />;
       }}
     ></Route>
   );

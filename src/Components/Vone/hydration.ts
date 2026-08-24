@@ -29,6 +29,9 @@ declare type HeatingProfileStepT = {
   duration: number;
 };
 declare type HeatingProfileT = HeatingProfileStepT[];
+
+/*
+// Commented out because they are not used in the current implementation
 declare type InkSettingWithOptionalValue = InkSettingT & {
   value?: number;
 };
@@ -50,6 +53,8 @@ declare type ConstructorArgsT = {
   settings: InkSettingsWithOptionalValues;
   heatingProfile: HeatingProfileT;
 };
+*/
+
 export declare type InkSetting = InkSettingT & {
   value: number;
 };

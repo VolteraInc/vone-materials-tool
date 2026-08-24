@@ -63,6 +63,7 @@ const Login: React.FC = () => {
                   width="20px"
                   height="18px"
                   src={googlelogo}
+                  alt="Google Logo"
                 />
                 Sign In with Google
               </Button>
