@@ -1,15 +1,16 @@
+import React from "react";
+
 interface TextProps {
   label: string;
   name: string;
   type: string;
   onChange?: (e: any) => void;
   disabled?: boolean;
-  ref: React.Ref<any>;
   value: any;
 }
 
-export default function TextInput(props: TextProps) {
-  const { name, type, onChange, disabled, ref, label, value } = props;
+const TextInput = React.forwardRef<HTMLInputElement, TextProps>((props, ref) => {
+  const { name, type, onChange, disabled, label, value } = props;
 
   return (
     <div>
@@ -24,4 +25,6 @@ export default function TextInput(props: TextProps) {
       />
     </div>
   );
-}
+});
+
+export default TextInput;

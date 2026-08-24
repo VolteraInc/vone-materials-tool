@@ -1,14 +1,15 @@
+import React from "react";
+
 interface NumProps {
   name: string;
   type: string;
   onChange: any;
   disabled?: boolean;
   step: string;
-  ref: any;
 }
 
-export default function NumInput(props: NumProps) {
-  const { name, type, onChange, disabled, ref, step } = props;
+const NumInput = React.forwardRef<HTMLInputElement, NumProps>((props, ref) => {
+  const { name, type, onChange, disabled, step } = props;
 
   return (
     <div>
@@ -16,4 +17,6 @@ export default function NumInput(props: NumProps) {
       <label htmlFor={name}>{name}</label>
     </div>
   );
-}
+});
+
+export default NumInput;
