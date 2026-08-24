@@ -40,6 +40,12 @@
 
     border-bottom: 2px solid #00C2F5;
   }
+
+  .list-inks {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
 
 .select-material-container {

@@ -38,7 +38,7 @@ const VoneHome: React.FC = () => {
               hidden={selectedInk.name === ""}
               onClick={() => setFormReady(true)}
             >
-              Use : ${selectedInk.name}
+              Use : {selectedInk.name}
               </button>
           </div>
         </div>

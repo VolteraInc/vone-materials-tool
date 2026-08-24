@@ -40,7 +40,7 @@ const Form: React.FC<inkProps> = (props) => {
       <div className="ink-form">
         <form onSubmit={onSubmit}>
           <div>
-            <h3>Details</h3>
+            <h2>Details</h2>
             <div className="vertical-selection-container">
               <TextInput
                 label="Ink Type"
@@ -76,7 +76,7 @@ const Form: React.FC<inkProps> = (props) => {
             </div>
           </div>
           <div className="ink-settings">
-            <h3>Settings</h3>
+            <h2>Settings</h2>
             <InkSettingsControl
               ink={newInk}
               disabled={false}
