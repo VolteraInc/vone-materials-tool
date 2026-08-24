@@ -20,26 +20,27 @@ const VoneHome: React.FC = () => {
             <DisplayMaterials
               parentCallback={(ink: any) => setSelectedInk(new Ink(ink))}
             />
-          </div>
-          <div className="button-container">
-            <button
-              className="standard-button"
-              hidden={false}
-              onClick={() => {
-                setSelectedInk(new Ink(defaultValue));
-                setFormReady(true);
-              }}
-            >
-              Blank Template
+            <div className="button-container">
+              <button
+                className="standard-button"
+                hidden={false}
+                onClick={() => {
+                  setSelectedInk(new Ink(defaultValue));
+                  setFormReady(true);
+                }}
+              >
+                Blank Template
               </button>
-            <button
-              className="standard-button"
-              hidden={selectedInk.name === ""}
-              onClick={() => setFormReady(true)}
-            >
-              Use : {selectedInk.name}
+              <button
+                className="standard-button"
+                hidden={selectedInk.name === ""}
+                onClick={() => setFormReady(true)}
+              >
+                Use : {selectedInk.name}
               </button>
+            </div>
           </div>
+          <div></div>
         </div>
       ) : (
         <div>

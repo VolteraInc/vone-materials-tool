@@ -1,9 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./_SideNav.scss";
 import { SidebarData } from "./SidebarData";
 import Logout from "../Authentication/Logout";
 
 const Sidebar: React.FC = () => {
+  const history = useHistory();
+
   return (
     <div className="Sidebar">
       <ul className="SidebarList">
@@ -14,7 +17,7 @@ const Sidebar: React.FC = () => {
               key={key}
               className="row"
               onClick={() => {
-                window.location.pathname = val.link;
+                history.push(val.link);
               }}
             >
               <div id="icon">{val.icon}</div>

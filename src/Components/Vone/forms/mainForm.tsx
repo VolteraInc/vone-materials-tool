@@ -68,7 +68,7 @@ const Form: React.FC<inkProps> = (props) => {
                 value={newInk.description} />
 
               <TextInput
-                label="Expiration Date:"
+                label="Expiration Date"
                 name="useBy"
                 type="date"
                 ref={register({ required: true })}

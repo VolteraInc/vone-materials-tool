@@ -4,7 +4,9 @@ import { useState } from "react";
 import NovaHome from "./Nova/NovaHome";
 import VoneHome from "./Vone/VoneHome";
 import Sidebar from "./SideNav/Sidebar";
+import Header from "./Header/Header";
 import { JumboButton } from "@volterainc/ui-core";
+import NotFound from "./NotFound";
 
 enum Platform {
   NOVA = "NOVA",
@@ -12,12 +14,17 @@ enum Platform {
   NONE = "None",
 }
 
-const Main: React.FC = () => {
+interface MainProps {
+  notFound?: boolean;
+}
+
+const Main: React.FC<MainProps> = ({ notFound = false }) => {
   return (
-    <div className="main-container">
+    <div className="main">
       <Sidebar />
-      <div className="Main">
-        <Home />
+      <Header />
+      <div className="main-container">
+        {notFound ? <NotFound /> : <Home />}
       </div>
     </div>
   );

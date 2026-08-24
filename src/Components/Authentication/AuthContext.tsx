@@ -46,13 +46,13 @@ function AuthProvider({ children }: any) {
   };
 
   return (
-    <div>
+    <>
       {pending ? (
         <div>Loading...</div>
       ) : (
         <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
       )}
-    </div>
+    </>
   );
 }
 export default AuthProvider;

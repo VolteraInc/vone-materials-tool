@@ -7,7 +7,7 @@ export const SidebarData = [
   {
     title: "Account",
     icon: <AccountCircleIcon />,
-    link: "",
+    link: "/account",
   },
   {
     title: "Home",
@@ -17,6 +17,6 @@ export const SidebarData = [
   {
     title: "Dashboard",
     icon: <DashboardIcon />,
-    link: "",
+    link: "/dashboard",
   },
 ];

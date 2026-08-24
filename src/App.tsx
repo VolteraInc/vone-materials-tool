@@ -15,15 +15,20 @@ function App() {
     <Router>
       <AuthProvider>
         <Switch>
-          <React.Fragment>
-            <PrivateRoute exact path="/" component={Main}></PrivateRoute>
-            <PrivateRoute exact path="/Form" render={(props:any) => ReactDOM.render(<Form ink={new Ink(props)} />, document.getElementById('root'))}></PrivateRoute>
-             {/* <PrivateRoute exact path="/Form" element={<Form ink={new Ink(defaultValue)} />}></PrivateRoute> */}
+          <PrivateRoute exact path="/" component={Main}></PrivateRoute>
+          <PrivateRoute exact path="/Form" render={(props:any) => ReactDOM.render(<Form ink={new Ink(props)} />, document.getElementById('root'))}></PrivateRoute>
+          {/* <PrivateRoute exact path="/Form" element={<Form ink={new Ink(defaultValue)} />}></PrivateRoute> */}
+          <Route exact path="/login" render={() => (
             <Container className="d-flex align-items-center justify-content-center">
-              <Route exact path="/login" component={Login}></Route>
-              <Route exact path="/signup" component={Signup}></Route>
+              <Login />
             </Container>
-          </React.Fragment>
+          )}></Route>
+          <Route exact path="/signup" render={() => (
+            <Container className="d-flex align-items-center justify-content-center">
+              <Signup />
+            </Container>
+          )}></Route>
+          <Route render={() => <Main notFound />}></Route>
         </Switch>
       </AuthProvider>
     </Router>
