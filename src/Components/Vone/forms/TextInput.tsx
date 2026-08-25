@@ -6,23 +6,35 @@ interface TextProps {
   type: string;
   onChange?: (e: any) => void;
   disabled?: boolean;
+  multiline?: boolean;
   value: any;
 }
 
-const TextInput = React.forwardRef<HTMLInputElement, TextProps>((props, ref) => {
-  const { name, type, onChange, disabled, label, value } = props;
+const TextInput = React.forwardRef<any, TextProps>((props, ref) => {
+  const { name, type, onChange, disabled, label, multiline, value } = props;
 
   return (
     <div>
       <label htmlFor={name}>{label}</label>
-      <input
-        name={name}
-        type={type}
-        ref={ref}
-        onChange={onChange}
-        disabled={disabled}
-        value={value}
-      />
+      {multiline ? (
+        <textarea
+          name={name}
+          ref={ref}
+          rows={4}
+          onChange={onChange}
+          disabled={disabled}
+          value={value}
+        />
+      ) : (
+        <input
+          name={name}
+          type={type}
+          ref={ref}
+          onChange={onChange}
+          disabled={disabled}
+          value={value}
+        />
+      )}
     </div>
   );
 });

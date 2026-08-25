@@ -16,15 +16,19 @@ enum Platform {
 
 interface MainProps {
   notFound?: boolean;
+  sidebarOpen: boolean;
+  onSidebarToggle: () => void;
 }
 
-const Main: React.FC<MainProps> = ({ notFound = false }) => {
+const Main: React.FC<MainProps> = ({ notFound = false, sidebarOpen, onSidebarToggle }) => {
+  const [homeVersion, setHomeVersion] = useState(0);
+
   return (
     <div className="main">
-      <Sidebar />
-      <Header />
-      <div className="main-container">
-        {notFound ? <NotFound /> : <Home />}
+      <Sidebar open={sidebarOpen} onHomeClick={() => setHomeVersion((version) => version + 1)} />
+      <Header onMenuClick={onSidebarToggle} />
+      <div className={`main-container${sidebarOpen ? "" : " sidebar-hidden"}`}>
+        {notFound ? <NotFound /> : <Home key={homeVersion} />}
       </div>
     </div>
   );

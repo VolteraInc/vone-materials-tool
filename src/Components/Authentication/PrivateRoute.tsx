@@ -3,7 +3,7 @@ import { Route /*, Redirect */ } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 
 const PrivateRoute: React.ComponentType<any> = ({
-  component: Component,
+  render: renderComponent,
   ...rest
 }) => {
   // const { currentUser }: any = useAuth();
@@ -18,7 +18,7 @@ const PrivateRoute: React.ComponentType<any> = ({
           <Redirect to="/login" />
         );
          */
-        return <Component {...props} />;
+        return renderComponent(props);
       }}
     ></Route>
   );

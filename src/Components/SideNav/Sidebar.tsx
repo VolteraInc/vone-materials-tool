@@ -4,11 +4,16 @@ import "./_SideNav.scss";
 import { SidebarData } from "./SidebarData";
 import Logout from "../Authentication/Logout";
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  open: boolean;
+  onHomeClick: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ open, onHomeClick }) => {
   const history = useHistory();
 
   return (
-    <div className="Sidebar">
+    <div className={`Sidebar${open ? "" : " hidden"}`}>
       <ul className="SidebarList">
         <div>
         {SidebarData.map((val, key) => {
@@ -17,6 +22,9 @@ const Sidebar: React.FC = () => {
               key={key}
               className="row"
               onClick={() => {
+                if (val.link === "/") {
+                  onHomeClick();
+                }
                 history.push(val.link);
               }}
             >

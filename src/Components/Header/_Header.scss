@@ -5,13 +5,29 @@
     width: 100dvw;
     min-height: 50px;
     height: 50px;
-    background-color: #2B2B2B;
+    background-color: #222222;
 
     .header-content {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 0.5rem;
         padding: 0 1rem;
         height: 100%;
+    }
+
+    .menu-button {
+        display: grid;
+        place-items: center;
+        padding: 0.25rem;
+        border: 0;
+        color: #FAFAFA;
+        background: transparent;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            color: #00C2F5;
+        }
     }
 }

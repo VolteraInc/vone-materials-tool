@@ -12,12 +12,18 @@ export interface inkProps {
   ink: Ink;
 }
 
+const isUnknownExpirationDate = (useBy: string) => useBy.trim().toLowerCase() === "unknown";
+
 const Form: React.FC<inkProps> = (props) => {
   const { reset, handleSubmit, register } = useForm({});
   const [newInk, setNewInk] = useState(new Ink(defaultValue));
+  const expirationDateUnknown = isUnknownExpirationDate(newInk.useBy);
 
   useEffect(() => {
-    reset(props.ink);
+    reset({
+      ...props.ink,
+      useBy: isUnknownExpirationDate(props.ink.useBy) ? "" : props.ink.useBy,
+    });
     setNewInk(props.ink);
     // Ignore empty dependency array since it is intentional.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,6 +69,7 @@ const Form: React.FC<inkProps> = (props) => {
                 label="Description"
                 name="description"
                 type="text"
+                multiline={true}
                 ref={register({ required: true })}
                 onChange={(e) => handleOnChange(newInk, "description", e.target.value)}
                 value={newInk.description} />
@@ -73,7 +80,12 @@ const Form: React.FC<inkProps> = (props) => {
                 type="date"
                 ref={register({ required: true })}
                 onChange={(e) => handleOnChange(newInk, "useBy", e.target.value)}
-                value={newInk.useBy} />
+                value={expirationDateUnknown ? "" : newInk.useBy} />
+              {expirationDateUnknown && (
+                <p className="input-notice" role="status">
+                  No expiration date is available.
+                </p>
+              )}
             </div>
           </div>
           <div className="ink-settings">
